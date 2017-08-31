@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-2">
+      <div class="chat-room__user-image">
+        <img src="http://via.placeholder.com/150x150" alt="Generic placeholder image">
+      </div>
+    </div>
+    <div class="col col-md-10">
+      <%= form_for @message, html: { class: "chat-room__new-message-form"} do |f| %>
+        <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
+        <%= f.text_area :body, rows: 2, autofocus: true, placeholder: "Your message", class: "form-control chat-room__new-message-textarea" %>
+        <%= f.submit "Send", id: "new-message", class: "btn btn-primary" %>
+      <% end %>
+      <% @messages.each do |message| %>
+        <% if message.user_id == current_user.id %>
+          <div class="chat-room__message-container current-user">
+            <p class="chat-room__message-body">
+              <%= message.body %>
+            </p>
+            <p class="chat-room__message-timestamp">
+              <%= message.timestamp %>
+            </p>
+          </div>
+        <% else %>
+          <div class="chat-room__message-container">
+            <p class="chat-room__message-body">
+              <%= message.body %>
+            </p>
+            <p class="chat-room__message-timestamp">
+              <%= message.timestamp %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

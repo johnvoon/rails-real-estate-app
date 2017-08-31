@@ -1,0 +1,7 @@
+<h1>Hello</h1>
+<h2><%= @listing.address.street %> <%= @listing.address.city %> <%= @listing.address.state %> <%= @listing.address.postcode %></h2>
+
+<%= form_for @chat_room, html: { class: "chat-room__new-message-form"} do |f| %>
+  <%= hidden_field_tag 'listing_tenant_user_id', @listing.tenant.user.id %>
+  <%= f.submit "Message Tenant", id: "new-message", class: "btn btn-primary" %>
+<% end %>

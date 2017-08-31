@@ -1,0 +1,29 @@
+.chat-room {
+  &__new-message-form {
+    margin-bottom: 20px;
+  }
+  &__new-message-textarea {
+    margin-bottom: 20px;
+  }
+  &__user-image {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__message-container {
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+  }
+  &__message-timestamp {
+    font-size: $font-size-sm;
+    color: #adadad;
+  }
+  &__message-body {
+    margin-bottom: 30px;
+  }
+}
+
+.current-user {
+  background-color: #c8f2c5;
+}

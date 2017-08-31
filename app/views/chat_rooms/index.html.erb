@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="chat-rooms__heading">Your Conversations</h1>
+  <% @chat_rooms.each do |chat_room| %>
+    <div class="chat-rooms__message-container">
+      <h4 class="chat-rooms__message-author text-primary">
+        <%= link_to chat_room_path(chat_room) do %>
+          <%= chat_room.other_participant(@current_user).company_name %>
+        <% end %>
+      </h4>
+      <% if chat_room.first_message %>
+        <p class="chat-rooms__message-body">
+          <%= chat_room.first_message.body %>
+        </p>
+        <p class="chat-rooms__message-timestamp">
+          <%= chat_room.first_message.timestamp %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
