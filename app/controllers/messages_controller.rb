@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:attachment, :body)
   end
 
   def find_chat_room
