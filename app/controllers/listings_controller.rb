@@ -1,10 +1,10 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.includes(:address, :rental_rates).order('created_at DESC')
+    @listings = Listing.includes(:address).order('created_at DESC')
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    @listing = Listing.search(params[:search])
     @chat_room = ChatRoom.new
   end
 end

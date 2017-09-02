@@ -12,4 +12,13 @@ class Listing < ApplicationRecord
     month: 2,
     year: 3
   }
+
+  def self.search(search)
+    if search
+      Listing.where(['street LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end
+
