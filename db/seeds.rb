@@ -16,7 +16,12 @@ users = (1..5).to_a.map do |_|
 end
 users << User.create!(
   email: "johnksvoon@gmail.com",
-  company_name: Faker::Company.name) do |u|
+  company_name: "Voon Pty Ltd") do |u|
+  u.password = 'hello123'
+end
+users << User.create!(
+  email: "nathaniel@gmail.com",
+  company_name: "Mether Pty Ltd") do |u|
   u.password = 'hello123'
 end
 
@@ -30,13 +35,21 @@ puts "Created #{Tenant.all.size} tenants"
 
 listings = (1..10).to_a.map do |_|
   Listing.create!(
+    title: [
+      "Creative space in the city", 
+      "Excellent location", 
+      "Close to public transport", 
+      "Lots of restaurants in the vicinity", 
+      "Spacious work area", 
+      "Newly refurbished office space"
+    ].sample
     deposit_payable: 1000,
     seats: (10..100).to_a.sample,
     size: (100..300).to_a.sample,
     availability_start_date: Date.strptime('05-09-2017', '%d-%m-%Y'),
     availability_end_date: Date.strptime('04-09-2018', '%d-%m-%Y'),
-    minimum_term: 2,
-    minimum_term_unit: (0..3).to_a.sample,
+    minimum_term: 28,
+    minimum_term_unit: 1,
     # just select a random tenant ID
     tenant_id: Tenant.all.map(&:id).sample
   )
@@ -63,7 +76,22 @@ puts "Created #{Address.all.size} addresses"
 listings.each do |listing|
   RentalRate.create!(
     rental_rate: 20,
-    rental_rate_unit: [0, 1, 2, 3].sample,
+    rental_rate_unit: 0,
+    listing_id: listing.id
+  )
+  RentalRate.create!(
+    rental_rate: 150,
+    rental_rate_unit: 1,
+    listing_id: listing.id
+  )
+  RentalRate.create!(
+    rental_rate: 3600,
+    rental_rate_unit: 2,
+    listing_id: listing.id
+  )
+  RentalRate.create!(
+    rental_rate: 43200,
+    rental_rate_unit: 3,
     listing_id: listing.id
   )
 end

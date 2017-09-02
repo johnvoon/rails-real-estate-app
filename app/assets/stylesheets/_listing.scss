@@ -1,0 +1,17 @@
+.listing {
+  &__unit {
+    font-size: 18px;
+  }
+  &__details-container {
+    display: flex;
+  }
+  &__attribute-container {
+    margin-right: 30px;
+  }
+  &__attribute-description {
+    font-weight: bold;
+  }
+  &__attribute {
+    font-size: 40px;
+  }
+}
