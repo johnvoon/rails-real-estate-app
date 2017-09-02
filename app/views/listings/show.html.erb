@@ -1,7 +1,32 @@
-<h1>Hello</h1>
-<h2><%= @listing.address.street %> <%= @listing.address.city %> <%= @listing.address.state %> <%= @listing.address.postcode %></h2>
+<div class="container">
+  <h1><%= @listing.title %></h1>
+  <h2><%= @listing.address.street %>, <%= @listing.address.state %> <%= @listing.address.postcode %></h2>
+  <div class="listing__details-container">
+    <div class="listing__attribute-container">
+      <p class="listing__attribute-description">Size</p>
+      <p class="listing__attribute"><%= @listing.size %> <span class="listing__unit">sqm</span></p>
+    </div>
+    <div class="listing__attribute-container">
+      <p class="listing__attribute-description">Seats</p>
+      <p class="listing__attribute"><%= @listing.seats %></p>  
+    </div>
+    <div class="listing__attribute-container">
+      <p class="listing__attribute-description">Minimum term</p>
+      <p class="listing__attribute"><%= @listing.minimum_term %> <span class="listing__unit"><%= @listing.minimum_term_unit %>s</span></p>  
+    </div>
+  </div>
+  <div class="listing__amenities">
+    <div class="row">
+      <% @listing.amenities.each do |amenity| %>
+        <div class="col-12 col-sm-4 col-md-3">
+          <p><%= fa_icon "check-square-o", text: amenity.description %></p>
+        </div>    
+      <% end %>
+    </div>
+  </div>
 
-<%= form_for @chat_room, html: { class: "chat-room__new-message-form"} do |f| %>
-  <%= hidden_field_tag 'listing_tenant_user_id', @listing.tenant.user.id %>
-  <%= f.submit "Message Tenant", id: "new-message", class: "btn btn-primary" %>
-<% end %>
+  <%= form_for @chat_room, html: { class: "chat-room__new-message-form"} do |f| %>
+    <%= hidden_field_tag 'listing_tenant_user_id', @listing.tenant.user.id %>
+    <%= f.submit "Message Tenant", id: "new-message", class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -5,8 +5,12 @@
         <div class="card">
           <img class="card-img-top" src="http://via.placeholder.com/350x200" alt="Card image cap">
           <div class="card-body">
-            <h4 class="card-title"><%= listing.address.unit_number %> <%= listing.address.street %></h4>
-            <p class="card-text"><%= listing.address.city %> <%= listing.address.state%> <%= listing.address.postcode%></p>
+            <h4 class="card-title"><%= listing.address.unit_number %> <%= listing.address.street %>, <%= listing.address.state%> <%= listing.address.postcode%></h4>
+            <div class="listings__rental-rate">$<%= format("%d", listing.rental_rates.first.rental_rate) %>/<%= listing.rental_rates.first.rental_rate_unit %></div>            
+            <div class="listings__details-container">
+              <div class="listings__seats"><%= fa_icon "users" %> <%= listing.seats %></div>
+              <div><%= fa_icon "object-group" %> <%= listing.size %>sqm</div>
+            </div>
             <%= link_to 'View', listing, class: "btn btn-primary" %>
           </div>
         </div>

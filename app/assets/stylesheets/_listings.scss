@@ -1,0 +1,21 @@
+.card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.listings {
+  &__rental-rate {
+    margin-bottom: 20px;
+  }
+  &__details-container {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  &__seats {
+    margin-right: 20px;
+  }
+}
