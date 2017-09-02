@@ -22,9 +22,9 @@ gem 'devise', '~> 4.3'
 gem 'faker', '~> 1.8', '>= 1.8.4'
 gem 'tod', '~> 2.1', '>= 2.1.1'
 gem 'bootstrap', '~> 4.0.0.beta'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem "paperclip", "~> 4.2"
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

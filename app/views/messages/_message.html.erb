@@ -1,0 +1,11 @@
+<div class="chat-room__message-container <%= 'current-user' if message.user_id == current_user_id %>">
+  <div class="chat-room__message-body">
+    <p><%= message.body %><p>
+    <% if message.attachment_file_name %>
+      <%= link_to  message.attachment_file_name, message.attachment.url %>
+    <% end %>
+  </div>
+  <p class="chat-room__message-timestamp">
+    <%= message.timestamp %>
+  </p>
+</div>

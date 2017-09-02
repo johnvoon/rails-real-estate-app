@@ -1,42 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col col-md-2">
-      <div class="chat-room__user-image">
+  <div class="chat-room__upper-content-container">
+    <div class="chat-room__user-image-container">
+      <figure>
         <img src="http://via.placeholder.com/150x150" alt="Generic placeholder image">
-      </div>
+        <figcaption>
+          <p>Company Name:</p>
+          <p><%= @other_participant.company_name %></p>
+        </figcaption>
+      </figure>
     </div>
-    <div class="col col-md-10">
+    <div class="chat-room__message-input-container">
       <%= form_for @message, html: { class: "chat-room__new-message-form"} do |f| %>
         <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
         <%= f.text_area :body, rows: 2, autofocus: true, placeholder: "Your message", class: "form-control chat-room__new-message-textarea" %>
-        <%= f.file_field :attachment, class: 'form-control'%>
-        <%= f.submit "Send", id: "new-message", class: "btn btn-primary" %>
-      <% end %>
-      
-      <% @messages.each do |message| %>
-        <% if message.user_id == current_user.id %>
-          <div class="chat-room__message-container current-user">
-            <p class="chat-room__message-body">
-              <p><%= message.body %><p>
-              <% if message.attachment_file_name %>
-                <%= link_to  message.attachment_file_name, message.attachment.url %>
-              <% end %>
-            </p>
-            <p class="chat-room__message-timestamp">
-              <%= message.timestamp %>
-            </p>
-          </div>
-        <% else %>
-          <div class="chat-room__message-container">
-            <p class="chat-room__message-body">
-              <%= message.body %>
-            </p>
-            <p class="chat-room__message-timestamp">
-              <%= message.timestamp %>
-            </p>
-          </div>
-        <% end %>
+        <%= f.file_field :attachment, class: "form-control chat-room__message-attachment" %>
+        <%= f.submit "Send", id: "new-message", class: "btn btn-primary chat-room__send-message-btn" %>
       <% end %>
     </div>
+  </div>
+  <div class="chat-room__messages-container" id="messages" data-chat-room-id="<%= @chat_room.id %>">
+    <%= render @messages, current_user_id: @current_user.id %>
   </div>
 </div>
