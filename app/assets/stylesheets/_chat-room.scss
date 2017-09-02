@@ -1,29 +1,75 @@
 .chat-room {
-  &__new-message-form {
+  &__upper-content-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__new-message-form,
+  &__new-message-textarea,
+  &__message-attachment {
     margin-bottom: 20px;
   }
-  &__new-message-textarea {
-    margin-bottom: 20px;
+  &__user-image-container {
+    width: 100%;
+    figure {
+      img {
+        margin: 0 20px 0 0;
+      }
+      display: flex;
+      flex-direction: row;
+    }
   }
-  &__user-image {
-    border-radius: 50%;
-    overflow: hidden;
+  &__message-input-container {
+    width: 100%;
+  }
+  &__messages-container {
+    display: flex;
+    flex-direction: column;
   }
   &__message-container {
-    margin: 0 auto;
+    p {
+      margin: 0;
+    }
     padding: 20px;
     margin-bottom: 20px;
     background-color: #f4f4f4;
+    width: 80%;
   }
   &__message-timestamp {
     font-size: $font-size-sm;
     color: #adadad;
   }
   &__message-body {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
   }
 }
 
 .current-user {
   background-color: #c8f2c5;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .chat-room {
+    &__upper-content-container {
+      display: flex;
+      flex-direction: row;
+    }
+    &__user-image-container {
+      flex: 1;
+      margin-right: 20px;
+    }
+    &__user-image-container {
+      width: 100%;
+      figure {
+        img {
+          margin: 0 0 10px 0;
+        }
+        figcaption {
+          font-size: 16px;
+        }
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }

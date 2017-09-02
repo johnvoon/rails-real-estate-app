@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.includes(:address).order('created_at DESC')
+    @listings = Listing.includes(:address, :rental_rates).order('created_at DESC')
   end
 
   def show

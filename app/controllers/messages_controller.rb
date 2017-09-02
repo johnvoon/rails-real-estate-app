@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_chat_room
 
+  def show
+    @user = current_user
+  end
+
   def create
     @message = current_user.messages.build(message_params)
     @message.chat_room_id = @chat_room.id

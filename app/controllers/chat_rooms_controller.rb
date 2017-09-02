@@ -12,6 +12,8 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.find_by(id: params[:id])
     @messages = ChatRoom.includes(:messages).find_by(id: params[:id]).messages
     @message = Message.new
+    @current_user = current_user
+    @other_participant = @chat_room.users.reject { |user| user.id == current_user }.first
   end
 
   def new

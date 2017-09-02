@@ -1,0 +1,3 @@
+Version control - keep history of project as it evolves over time
+Commit - Save point with message
+Git stores the diff
